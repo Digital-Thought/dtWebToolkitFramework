@@ -1,1 +1,1 @@
-include src/dtWebToolkitFramework/_resources/*
+recursive-include src/dtWebToolkitFramework/_resources
