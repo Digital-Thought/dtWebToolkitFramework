@@ -37,7 +37,7 @@ class AbstractWebToolkit(AbstractApp):
         for util in self.get_utils():
             logging.info(f'Loading Tool: {util}')
             module = importlib.import_module(util)
-            tool: AbstractTool = module.Tool(self.flask_app, f"{self.app_spec['full_name']}, Version: {self.app_spec['version']}")
+            tool: AbstractTool = module.Tool(self.flask_app, f"{self.app_spec['full_name']}, Version: {self.app_spec['version']}", self.settings)
             self.flask_app.add_endpoint(endpoint=f'/{tool.short_name()}', endpoint_name=tool.short_name(),
                                         handler=tool.tool_home)
             self.flask_app.add_endpoint(endpoint=f'/{tool.short_name()}/static',

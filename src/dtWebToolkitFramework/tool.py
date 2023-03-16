@@ -4,10 +4,11 @@ import flask
 
 class AbstractTool(object):
 
-    def __init__(self, flask_wrapper, app_name):
+    def __init__(self, flask_wrapper, app_name, settings):
         super().__init__()
         self.flask_wrapper = flask_wrapper
         self.app_name = app_name
+        self.settings = settings
         self.base_resources = os.path.join(os.path.dirname(os.path.abspath(__file__)), "_resources")
         self.add_custom_endpoints()
 
