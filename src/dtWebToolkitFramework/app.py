@@ -83,8 +83,8 @@ class AbstractWebToolkit(AbstractApp):
             return flask.Response(content, 200)
 
     def assets(self, path):
-        logging.info(f"Rendering: {self.resources}/assets{path}")
-        return send_from_directory(f'{self.resources}/assets', path)
+        logging.info(f"Rendering: {self.resources}/assets/{path}")
+        return send_from_directory(f'{self.resources}/assets/', path)
 
     def get_utils(self):
         raise NotImplementedError
