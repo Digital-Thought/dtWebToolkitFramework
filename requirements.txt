@@ -1,1 +1,2 @@
 dtAppFramework @ git+https://github.com/Digital-Thought/dtAppFramework@development/1.1.0#egg=dtAppFramework
+flask
