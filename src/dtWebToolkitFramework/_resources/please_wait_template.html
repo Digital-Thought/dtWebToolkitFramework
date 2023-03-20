@@ -63,7 +63,7 @@
         <div class="card-wrapper">
             <div class="card-box align-center">
                 <img src="/assets/images/loader.gif" style="width:128px;height:128px;display:revert" id="wait"/>
-                <h5 class="card-title mbr-fonts-style display-7"><strong id="message">{{MESSAGE}}</strong></h5></a>
+                <h5 class="card-title mbr-fonts-style display-7"><strong id="message"><br>{{MESSAGE}}</strong></h5></a>
             </div>
         </div>
     </div>
@@ -95,6 +95,7 @@
                 return response.json()
             }).then(function (data) {
                 title.textContent = data.title
+                message.textContent = data.message
                 if (data.complete) {
                     clearInterval(id);
                     document.getElementById("wait").src="/assets/images/check-tick-icon-14142.png";
