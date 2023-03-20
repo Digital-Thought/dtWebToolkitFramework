@@ -94,9 +94,10 @@
             fetch('status?task_id={{TASK_ID}}').then(function (response) {
                 return response.json()
             }).then(function (data) {
-                title.textContent = data.title
-                message.textContent = data.message
+                title.textContent = data.title;
+                message.textContent = data.message;
                 if (data.complete) {
+                    message.innerHTML = data.message;
                     clearInterval(id);
                     document.getElementById("wait").src="/assets/images/check-tick-icon-14142.png";
                 }
