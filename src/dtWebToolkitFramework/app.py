@@ -40,7 +40,7 @@ class AbstractWebToolkit(AbstractApp):
             tool: AbstractTool = module.Tool(self.flask_app, f"{self.app_spec['full_name']}, Version: {self.app_spec['version']}", self.settings)
             self.flask_app.add_endpoint(endpoint=f'/{tool.short_name()}', endpoint_name=tool.short_name(),
                                         handler=tool.tool_home)
-            self.flask_app.add_endpoint(endpoint=f'/{tool.short_name()}/static',
+            self.flask_app.add_endpoint(endpoint=f'/{tool.short_name()}/static/<path:path>',
                                         endpoint_name=f'{tool.short_name()}_statics',
                                         handler=tool.tool_static_content)
             self.tools.append(tool)
