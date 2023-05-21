@@ -12,6 +12,9 @@ class AbstractTool(object):
         self.base_resources = os.path.join(os.path.dirname(os.path.abspath(__file__)), "_resources")
         self.add_custom_endpoints()
 
+    def is_enabled(self):
+        raise NotImplementedError
+
     def add_custom_endpoints(self):
         raise NotImplementedError
 
@@ -30,6 +33,9 @@ class AbstractTool(object):
     def tool_home_body_content(self):
         raise NotImplementedError
 
+    def disabled_reason(self):
+        raise NotImplementedError
+
     def tool_static_content(self, path):
         raise NotImplementedError
 
@@ -37,6 +43,14 @@ class AbstractTool(object):
         with open(f'{self.base_resources}/base_template.html', mode='r') as base_template:
             return flask.Response(base_template.read().replace('{{CONTENT}}', self.tool_home_body_content())
                                   .replace('{{APP_NAME}}', self.app_name), 200)
+
+    def tool_disabled(self):
+        with open(f'{self.base_resources}/base_template.html', mode='r') as base_template:
+            with open(f'{self.base_resources}/tool_disabled.html', mode='r') as tool_disabled_template:
+                return flask.Response(base_template.read().replace('{{CONTENT}}', tool_disabled_template.read())
+                                      .replace('{{APP_NAME}}', self.app_name)
+                                      .replace('{{NAME}}', self.name())
+                                      .replace('{{REASON}}', self.disabled_reason()), 200)
 
     def error_message(self, friendly, detail):
         with open(f'{self.base_resources}/base_template.html', mode='r') as base_template:

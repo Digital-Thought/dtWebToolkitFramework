@@ -43,7 +43,8 @@ class Tool(AbstractTool):
             entry['complete'] = 'True'
         return jsonify(entry)
 
-
+    def is_enabled(self):
+        return True
 
     def name(self):
         return "My First Tool"
@@ -56,6 +57,9 @@ class Tool(AbstractTool):
 
     def icon(self):
         return 'mobi-mbri-extension'
+
+    def disabled_reason(self):
+        return "Because I dont feel like enabling it"
 
     def tool_home_body_content(self):
         with open(f'{resources}/form_upload_body.html', mode='r') as body:
