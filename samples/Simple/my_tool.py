@@ -56,7 +56,7 @@ class Tool(AbstractTool):
         return "This is the first tool I have created for demonstration purposes."
 
     def icon(self):
-        return 'mobi-mbri-extension'
+        return 'mobi-mbri-responsive-2'
 
     def disabled_reason(self):
         return "Because I dont feel like enabling it"

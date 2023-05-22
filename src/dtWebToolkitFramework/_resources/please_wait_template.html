@@ -97,9 +97,14 @@
                 title.textContent = data.title;
                 message.textContent = data.message;
                 if (data.complete) {
-                    message.innerHTML = data.message;
-                    clearInterval(id);
-                    document.getElementById("wait").src="/assets/images/check-tick-icon-14142.png";
+                    if (data.operation == "message") {
+                        message.innerHTML = data.message;
+                        clearInterval(id);
+                        document.getElementById("wait").src="/assets/images/check-tick-icon-14142.png";
+                    }
+                    if (data.operation == "redirect") {
+                        window.location = data.redirect;
+                    }
                 }
             }).catch(function (error) {
                 console.log(error);
